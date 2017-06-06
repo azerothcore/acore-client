@@ -6,12 +6,7 @@ export default [
     type: 'input',
     name: 'clientData',
     message: 'Client data directory',
-    default: function() {
-      if (process.platform === 'win32') {
-        return 'C:/Program Files (x86)/World of Warcraft/Data';
-      }
-      return '/Applications/World of Warcraft/Data';
-    },
+    default: "",
     validate: function(value) {
       const done = this.async();
 

@@ -1,17 +1,8 @@
 # Wowser
 
-[![Version](https://img.shields.io/npm/v/wowser.svg?style=flat)](https://www.npmjs.org/package/wowser)
-[![Join chat](https://img.shields.io/badge/gitter-join_chat-blue.svg?style=flat)](https://gitter.im/wowserhq/wowser)
-[![Build Status](https://img.shields.io/travis/wowserhq/wowser.svg?style=flat)](https://travis-ci.org/wowserhq/wowser)
-[![Dependency Status](https://img.shields.io/gemnasium/wowserhq/wowser.svg?style=flat)](https://gemnasium.com/wowserhq/wowser)
-[![Code Climate](https://img.shields.io/codeclimate/github/wowserhq/wowser.svg?style=flat)](https://codeclimate.com/github/wowserhq/wowser)
-[![Coverage](https://img.shields.io/codeclimate/coverage/github/wowserhq/wowser.svg?style=flat)](https://codeclimate.com/github/wowserhq/wowser)
-
-World of Warcraft in the browser using JavaScript and WebGL.
+Browser JavaScript and WebGL Game Client.
 
 Licensed under the **MIT** license, see LICENSE for more information.
-
-[![See Wowser tech demo](http://office.moonsphere.net/wowser-tech-demo.jpg)](https://www.youtube.com/watch?v=8QFY_3uM1iw)
 
 ## Background
 
@@ -23,13 +14,12 @@ and audio, to name a few.
 ## Features
 
 Wowser is aiming to be both a low-level API as well as a graphical client,
-interacting with a World of Warcraft server like an official client would.
+interacting with compatible game servers.
 
-**Note:** Only Wrath of the Lich King (3.3.5a) is currently supported. A copy of
-the official client is required.
+Wowser is compatible with all server based on Mangos 335 such as AzerothCore, TrinityCore
+and Mangos itself. Of course other servers that use the same opcode specifications of projects above, are also supported .
 
-**Warning:** Do not attempt to use this client on official/retail servers as
-your account may get banned.
+
 
 At present, Wowser is capable of:
 
@@ -99,7 +89,7 @@ npm run serve
 
 On first run you will be prompted to specify the following:
 
-- Path to client data folder (e.g. `C:/Program Files (x86)/World of Warcraft/Data`)
+- Path to client data folder
 - Server port (default is `3000`)
 - Number of cluster workers (default depends on amount of CPUs)
 
