@@ -12,7 +12,7 @@ class AuthScreen extends React.Component {
 
     this.state = {
       host: window.location.hostname,
-      port: session.auth.constructor.PORT,
+      port: session.auth.defport,
       username: '',
       password: ''
     };
@@ -73,7 +73,7 @@ class AuthScreen extends React.Component {
           </p>
 
           <form onSubmit={ this._onSubmit }>
-            {/*<fieldset>
+            <fieldset>
               <label>Host</label>
               <input type="text" onChange={ this._onChange }
                      name="host" value={ this.state.host } />
@@ -81,7 +81,7 @@ class AuthScreen extends React.Component {
               <label>Port</label>
               <input type="text" onChange={ this._onChange }
                      name="port" value={ this.state.port } />
-            </fieldset>*/}
+            </fieldset>
 
             <fieldset>
               <label>Username</label>
