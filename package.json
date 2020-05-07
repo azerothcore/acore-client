@@ -54,7 +54,7 @@
     "react-tabs": "^0.8.2",
     "three": "^0.77.0",
     "websockify": "^0.7.1",
-    "ws": "1.1.1"
+    "ws": "7.2.5"
   },
   "devDependencies": {
     "babel-core": "^6.10.0",
