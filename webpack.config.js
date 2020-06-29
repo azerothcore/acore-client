@@ -39,11 +39,11 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules|blizzardry/
       },
-      {
-        test: /\.jsx?$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules|blizzardry/
-      }
+      // {
+      //   test: /\.jsx?$/,
+      //   loader: 'eslint-loader',
+      //   exclude: /node_modules|blizzardry/
+      // }
     ]
   },
   plugins: [
@@ -55,11 +55,11 @@ module.exports = {
   ],
   devServer: {
     contentBase: path.join(__dirname, 'public'),
-    proxy: {
-      '/pipeline/*': {
-        target: 'http://localhost:3000',
-        secure: false
-      }
-    }
+    // proxy: {
+    //   '/pipeline/*': {
+    //     target: 'http://localhost:3000',
+    //     secure: false
+    //   }
+    // }
   }
 };

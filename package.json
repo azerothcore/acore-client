@@ -35,7 +35,6 @@
   ],
   "dependencies": {
     "array-find": "^0.1.1",
-    "blizzardry": "^0.4.0",
     "bluebird": "^2.10.0",
     "byte-buffer": "^1.0.3",
     "classnames": "^2.2.0",
@@ -80,7 +79,7 @@
     "file-loader": "^0.9.0",
     "glslify-import": "^3.0.0",
     "glslify-loader": "github:wowserhq/glslify-loader#query-opts",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "github:gulpjs/gulp",
     "gulp-babel": "^6.1.0",
     "gulp-cached": "^1.1.0",
     "gulp-mocha": "2.2.0",
