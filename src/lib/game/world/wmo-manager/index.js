@@ -1,6 +1,5 @@
 import ContentQueue from '../content-queue';
 import WMOHandler from './wmo-handler';
-import WMOBlueprint from '../../../pipeline/wmo/blueprint';
 
 class WMOManager {
 
@@ -147,13 +146,6 @@ class WMOManager {
   processLoadEntry(wmoEntry) {
     const wmoHandler = new WMOHandler(this, wmoEntry);
     this.entries.set(wmoEntry.id, wmoHandler);
-
-    WMOBlueprint.load(wmoEntry.filename).then((wmoRoot) => {
-      wmoHandler.load(wmoRoot);
-
-      this.counters.loadingEntries--;
-      this.counters.loadedEntries++;
-    });
   }
 
   animate(delta, camera, cameraMoved) {

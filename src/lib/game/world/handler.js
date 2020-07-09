@@ -1,9 +1,6 @@
 import EventEmitter from 'events';
 import THREE from 'three';
 
-import M2Blueprint from '../../pipeline/m2/blueprint';
-// import WorldMap from './map';
-
 class WorldHandler extends EventEmitter {
 
   constructor(session) {
@@ -128,9 +125,6 @@ class WorldHandler extends EventEmitter {
     if (this.map !== null) {
       this.map.animate(delta, camera, cameraMoved);
     }
-
-    // Send delta updates to instanced M2 animation managers.
-    M2Blueprint.animate(delta);
   }
 
   animateEntities(delta, camera, cameraMoved) {

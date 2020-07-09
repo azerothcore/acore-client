@@ -1,5 +1,3 @@
-import M2Blueprint from '../../pipeline/m2/blueprint';
-
 class DoodadManager {
 
   // Proportion of pending doodads to load or unload in a given tick.
@@ -113,21 +111,6 @@ class DoodadManager {
   }
 
   loadDoodad(entry) {
-    M2Blueprint.load(entry.filename).then((doodad) => {
-      if (this.entriesPendingUnload.has(entry.id)) {
-        return;
-      }
-
-      doodad.entryID = entry.id;
-
-      this.doodads.set(entry.id, doodad);
-
-      this.placeDoodad(doodad, entry.position, entry.rotation, entry.scale);
-
-      if (doodad.animated) {
-        this.enableDoodadAnimations(entry, doodad);
-      }
-    });
   }
 
   enableDoodadAnimations(entry, doodad) {
@@ -178,8 +161,6 @@ class DoodadManager {
     this.doodads.delete(entry.id);
     this.animatedDoodads.delete(entry.id);
     this.map.remove(doodad);
-
-    M2Blueprint.unload(doodad);
   }
 
   // Place a doodad on the world map, adhereing to a provided position, rotation, and scale.

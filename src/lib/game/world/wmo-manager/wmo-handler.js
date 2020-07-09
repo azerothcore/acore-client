@@ -1,7 +1,4 @@
 import ContentQueue from '../content-queue';
-import WMOBlueprint from '../../../pipeline/wmo/blueprint';
-import WMOGroupBlueprint from '../../../pipeline/wmo/group/blueprint';
-import M2Blueprint from '../../../pipeline/m2/blueprint';
 
 class WMOHandler {
 
@@ -98,19 +95,6 @@ class WMOHandler {
       this.counters.loadingGroups--;
       return;
     }
-
-    WMOGroupBlueprint.loadWithID(this.root, wmoGroupID).then((wmoGroup) => {
-      if (this.unloading) {
-        return;
-      }
-
-      this.loadGroup(wmoGroupID, wmoGroup);
-
-      this.manager.counters.loadingGroups--;
-      this.counters.loadingGroups--;
-      this.manager.counters.loadedGroups++;
-      this.counters.loadedGroups++;
-    });
   }
 
   loadGroup(wmoGroupID, wmoGroup) {
@@ -165,24 +149,6 @@ class WMOHandler {
       this.counters.loadingDoodads--;
       return;
     }
-
-    M2Blueprint.load(wmoDoodadEntry.filename).then((wmoDoodad) => {
-      if (this.unloading) {
-        return;
-      }
-
-      this.loadDoodad(wmoDoodadEntry, wmoDoodad);
-
-      this.manager.counters.loadingDoodads--;
-      this.counters.loadingDoodads--;
-      this.manager.counters.loadedDoodads++;
-      this.counters.loadedDoodads++;
-
-      if (wmoDoodad.animated) {
-        this.manager.counters.animatedDoodads++;
-        this.counters.animatedDoodads++;
-      }
-    });
   }
 
   loadDoodad(wmoDoodadEntry, wmoDoodad) {
@@ -238,15 +204,11 @@ class WMOHandler {
 
     for (const wmoGroup of this.groups.values()) {
       this.root.remove(wmoGroup);
-      WMOGroupBlueprint.unload(wmoGroup);
     }
 
     for (const wmoDoodad of this.doodads.values()) {
       this.root.remove(wmoDoodad);
-      M2Blueprint.unload(wmoDoodad);
     }
-
-    WMOBlueprint.unload(this.root);
 
     this.groups = new Map();
     this.doodads = new Map();
