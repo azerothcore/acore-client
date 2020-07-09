@@ -126,13 +126,11 @@ When contributing, please:
 - Open a pull request (preferably on a separate branch)
 
 [Babel]: https://babeljs.io/
-[BLPConverter]: https://github.com/wowserhq/blizzardry#blp
 [ES2015]: https://babeljs.io/docs/learn-es2015/
 [Gulp]: http://gulpjs.com/
 [JavaScript's typed arrays]: http://caniuse.com/#search=typed%20arrays
 [Mocha]: http://mochajs.org/
 [Node.js]: http://nodejs.org/#download
-[StormLib]: https://github.com/wowserhq/blizzardry#mpq
 [Websockify]: https://github.com/kanaka/websockify/
 [soon™]: http://www.wowwiki.com/Soon
 [webpack]: http://webpack.github.io/
