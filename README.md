@@ -65,7 +65,7 @@ then configure it.
 npm run web-dev
 ```
 
-Wowser will be served on `http://0.0.0.0:8080/webpack-dev-server/`.
+Wowser will be served on `http://127.0.0.1:8080/webpack-dev-server/`.
 
 ### Socket proxies
 
