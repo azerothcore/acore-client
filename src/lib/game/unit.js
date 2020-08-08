@@ -1,8 +1,5 @@
 import THREE from 'three';
-
-import DBC from '../pipeline/dbc';
 import Entity from './entity';
-import M2Blueprint from '../pipeline/m2/blueprint';
 
 class Unit extends Entity {
 
@@ -42,23 +39,6 @@ class Unit extends Entity {
     if (!displayID) {
       return;
     }
-
-    DBC.load('CreatureDisplayInfo', displayID).then((displayInfo) => {
-      this._displayID = displayID;
-      this.displayInfo = displayInfo;
-      const { modelID } = displayInfo;
-
-      DBC.load('CreatureModelData', modelID).then((modelData) => {
-        this.modelData = modelData;
-        this.modelData.path = this.modelData.file.match(/^(.+?)(?:[^\\]+)$/)[1];
-        this.displayInfo.modelData = this.modelData;
-
-        M2Blueprint.load(this.modelData.file).then((m2) => {
-          m2.displayInfo = this.displayInfo;
-          this.model = m2;
-        });
-      });
-    });
   }
 
   get view() {

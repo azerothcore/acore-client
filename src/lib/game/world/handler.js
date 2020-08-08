@@ -1,9 +1,6 @@
 import EventEmitter from 'events';
 import THREE from 'three';
 
-import M2Blueprint from '../../pipeline/m2/blueprint';
-import WorldMap from './map';
-
 class WorldHandler extends EventEmitter {
 
   constructor(session) {
@@ -105,14 +102,14 @@ class WorldHandler extends EventEmitter {
   }
 
   changeMap(mapID) {
-    WorldMap.load(mapID).then((map) => {
-      if (this.map) {
-        this.scene.remove(this.map);
-      }
-      this.map = map;
-      this.scene.add(this.map);
-      this.renderAtCoords(this.player.position.x, this.player.position.y);
-    });
+    // WorldMap.load(mapID).then((map) => {
+    //   if (this.map) {
+    //     this.scene.remove(this.map);
+    //   }
+    //   this.map = map;
+    //   this.scene.add(this.map);
+    //   this.renderAtCoords(this.player.position.x, this.player.position.y);
+    // });
   }
 
   changeModel(_unit, _oldModel, _newModel) {
@@ -128,9 +125,6 @@ class WorldHandler extends EventEmitter {
     if (this.map !== null) {
       this.map.animate(delta, camera, cameraMoved);
     }
-
-    // Send delta updates to instanced M2 animation managers.
-    M2Blueprint.animate(delta);
   }
 
   animateEntities(delta, camera, cameraMoved) {
