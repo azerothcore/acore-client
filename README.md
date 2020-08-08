@@ -1,6 +1,6 @@
-# Wowser
+# WoW Chat, browser game client
 
-Browser JavaScript and WebGL Game Client.
+WoW Chat, browser game client based on **WoWser**.
 
 Licensed under the **MIT** license, see LICENSE for more information.
 
@@ -20,8 +20,7 @@ Wowser is compatible with all server based on Mangos 335 such as AzerothCore, Tr
 and Mangos itself. Of course other servers that use the same opcode specifications of projects above, are also supported .
 
 
-
-At present, Wowser is capable of:
+At present, this project is capable of:
 
 - Authenticating by username / password.
 - Listing available realms.
@@ -31,17 +30,12 @@ At present, Wowser is capable of:
 - Chat in game on following channels: Guild, Say, Wispers, World (hardcoded custom channel)
 - Logging game world packets, such as when a creature moves in the vicinity.
 
-In addition, there's good progress on getting terrain and models rendered.
-
 ## Browser Support
 
 Wowser is presumed to be working on any browser supporting [JavaScript's typed
 arrays] and at the very least a binary version of the WebSocket protocol.
 
 ## Development
-
-Wowser is written in [ES2015], developed with [webpack] and [Gulp], compiled by
-[Babel] and [soon™] to be tested through [Mocha].
 
 1. Clone the repository:
 
@@ -60,9 +54,9 @@ Wowser is written in [ES2015], developed with [webpack] and [Gulp], compiled by
 4. Install [StormLib] and [BLPConverter], which are used to handle Blizzard's
    game files.
 
-### Client
+### Run the client
 
-Create a copy of /conf/conf.js.dist file and name it /conf/conf.js (don't delete the .dist file)
+Create a copy of **conf/conf.js.dist** file and name it **conf/conf.js** (don't delete the .dist file)
 then configure it.
 
 [Webpack]'s development server monitors source files and builds:
@@ -71,37 +65,7 @@ then configure it.
 npm run web-dev
 ```
 
-Wowser will be served on `http://localhost:8080`.
-
-### Pipeline server
-
-To deliver game resources to its client, Wowser ships with a pipeline.
-
-Build the pipeline:
-
-```shell
-npm run gulp
-```
-
-Keep this process running to monitor source files and automatically rebuild.
-
-After building, serve the pipeline as follows in a separate process:
-
-```shell
-npm run serve
-```
-
-On first run you will be prompted to specify the following:
-
-- Path to client data folder
-- Server port (default is `3000`)
-- Number of cluster workers (default depends on amount of CPUs)
-
-Clear these settings by running `npm run reset`
-
-**Disclaimer:** Wowser serves up resources to the browser over HTTP. Depending
-on your network configuration these may be available to others. Respect laws and
-do not distribute game data you do not own.
+Wowser will be served on `http://127.0.0.1:8080/webpack-dev-server/`.
 
 ### Socket proxies
 
@@ -110,13 +74,32 @@ clients.
 
 [Websockify] can - among other things - act as a proxy for raw TCP sockets.
 
-For now, you will want to proxy both port 3724 (auth) and 8129 (world). Use a
-different set of ports if the game server is on the same machine as your client.
+For now, you will want to proxy both port 3724 (auth) and 8085 (world). 
 
-```shell
-npm run proxy 3724 host:3724
-npm run proxy 8129 host:8129
+#### - Proxy port in localhost
+
+If you want to connect this web client to a server in the same machine you can change the authserver port from 8085 to 8086 in the  **auth realmlist table** using:
+```SQL
+UPDATE `realmlist` SET `port`=8086 WHERE `id`=1;
 ```
+
+Run proxy for localhost:
+```shell
+npm run proxy 3725 127.0.0.1:3724
+npm run proxy 8086 127.0.0.1:8085
+```
+
+While login using the web client, use the port 3725.
+
+#### - Proxy port for a public server
+
+Run proxy for a public server:
+```shell
+npm run proxy 3724 server.realmlist:3724
+npm run proxy 8085 server.realmlist:8085
+```
+replacing *server.realmlist* with the realmlist of the server.
+
 
 ## Contribution
 
