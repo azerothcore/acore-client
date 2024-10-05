@@ -68,7 +68,7 @@
     "babel-plugin-transform-function-bind": "^6.8.0",
     "babel-preset-react": "^6.5.0",
     "chai": "^3.5.0",
-    "codeclimate-test-reporter": "^0.3.0",
+    "codeclimate-test-reporter": "^0.5.1",
     "css-loader": "^0.23.0",
     "del": "^1.2.0",
     "eslint": "^2.13.0",
