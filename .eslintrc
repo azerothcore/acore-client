@@ -1,5 +1,4 @@
 {
-  "extends": "timkurvers/react",
   "rules": {
     // Allow vertically aligning values
     "no-multi-spaces": [0],

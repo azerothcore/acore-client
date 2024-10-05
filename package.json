@@ -73,7 +73,6 @@
     "del": "^1.2.0",
     "eslint": "^2.13.0",
     "eslint-config-airbnb": "^6.2.0",
-    "eslint-config-timkurvers": "^0.2.3",
     "eslint-loader": "^1.3.0",
     "eslint-plugin-react": "^4.3.0",
     "file-loader": "^0.9.0",
