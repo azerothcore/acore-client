@@ -41,7 +41,8 @@ class GameHandler extends Socket {
 
   // Connects to given host through given realm information
   connect(host, realm) {
-    this.realm = realm;
+    // this.realm = _realm;
+
     if (!this.connected) {
       super.connect(host, realm.port);
       console.info('connecting to game-server @', this.host, ':', this.port);
@@ -151,17 +152,17 @@ class GameHandler extends Socket {
     const declined = gp.readUnsignedByte();
 
     this.session.player.name=name;
-    
+
     this.playerNames[guid] = {
         name : name
         //race : race,
         //gender : gender,
         //playerClass : playerClass
     };
-    
+
     this.session.chat.emit("message",null); // to refresh
   }
-  
+
   askName(guid) {
     const app = new GamePacket(GameOpcode.CMSG_NAME_QUERY, 64);
 
@@ -223,7 +224,10 @@ class GameHandler extends Socket {
     app.write(seed.toArray());   // client-seed
     app.writeUnsignedInt(0);     // (?)
     app.writeUnsignedInt(0);     // (?)
-    app.writeUnsignedInt(this.realm.id);     // realmid
+
+    // app.writeUnsignedInt(this.realm.id);     // realmid
+    app.writeUnsignedInt(1);     // realmid
+
     app.writeUnsignedInt(0);     // (?)
     app.writeUnsignedInt(0);     // (?)
     app.write(hash.digest);      // digest

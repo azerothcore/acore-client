@@ -74,7 +74,7 @@ class ChatHandler extends EventEmitter {
     const app = new GamePacket(GameOpcode.CMSG_MESSAGE_CHAT, size);
     app.writeUnsignedInt(type); // type
 
-    app.writeUnsignedInt(0); // lang , 0: universal [TODO: use race specific ]
+    app.writeUnsignedInt(Language.LANG_COMMON); // lang , 7: common [TODO: use race specific ]
 
     switch(type) {
         case ChatEnum.CHAT_MSG_SAY:
@@ -120,13 +120,13 @@ class ChatHandler extends EventEmitter {
         var nameLen =  gp.readUnsignedInt();
         var senderName = gp.readString(nameLen);
 
-        this.playerNames[guid1.low] = { 
+        this.playerNames[guid1.low] = {
             name : senderName,
             isGm : true
         };
 
     } else {
-        if (!this.playerNames[guid1.low]) {    
+        if (!this.playerNames[guid1.low]) {
             this.playerNames[guid1.low]= { name: guid1.low };
             this.session.game.askName(guid1);
         }
