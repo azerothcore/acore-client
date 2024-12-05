@@ -40,7 +40,7 @@
     "classnames": "^2.2.0",
     "configstore": "^1.2.0",
     "deep-equal": "^1.0.0",
-    "express": "^4.9.3",
+    "express": "^4.21.2",
     "globby": "^5.0.0",
     "inquirer": "^0.8.5",
     "jsbn": "github:timkurvers/jsbn#wowser",
